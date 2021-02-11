@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- script de aframe -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <!-- scrips de los ambientes -->
+    <script src="https://unpkg.com/aframe-environment-component@1.2.0/dist/aframe-environment-component.min.js"></script>
+
+</head>
+<body>
+    <a-scene >
+        <!-- Ambiente -->
+        <a-entity  environment="preset: poison; groundColor: #071cfa; skyType: gradient; skyColor:#f705ef; fog:0.5"></a-entity>
+         
+        <!-- etiqueta para precargar los recursos -->
+
+        <a-assets>
+            <a-asset-item id="pollito" src="./assets/pollito.gltf"></a-asset-item>
+            <a-asset-item id="azul" src="./assets/azul.gltf"></a-asset-item>
+            <a-asset-item id="rojo" src="./assets/rojo.gltf"></a-asset-item>
+            <a-asset-item id="verde" src="./assets/verde.gltf"></a-asset-item>
+        </a-assets>
+        
+        <!-- Ejempolo de animaciones  -->
+        <!-- en el atributo animation- identificar la prpiedad que se va usar y hacia que cordenada se la dirigir, cuanto va durar de a -- > b -->
+      
+        <a-entity position="2 0 2"
+                  animation="property: position; to: 1 8 -10; dir: alternate; dur: 8000; easing: linear; loop: true"
+                  gltf-model="#pollito"
+                  scale=" 3 3 3"></a-entity>
+
+        <a-entity animation="property: rotation; to: 0 360 0; dir: alternate; loop: true; dur: 2000"
+                  position="1 0 2"
+                  gltf-model="#azul" 
+                  scale=" 3 3 3"></a-entity>
+
+        <a-entity scale=" 3 3 3"
+                  animation="property: scale; to: 15 10 10; loop: true; dur: 22000"
+                  position="0 0 2" gltf-model="#rojo" ></a-entity>
+
+        <a-entity animation__saltar="property: position; to: 1 8 -10; dir: alternate; dur: 8000; easing: easeInSine; loop: true"
+                  animation__vuelta="property: rotation; to: 0 360 0; dir: alternate; loop: true; dur: 2000" 
+                  position="-1 0 2"
+                  gltf-model="#verde"
+                  scale=" 3 3 3"></a-entity>
+
+        <a-entity position="-4 0 2" gltf-model="#verde" scale=" 3 3 3"></a-entity>
+        
+        <!-- animacion de la camara -->
+        <a-camera animation="property: position; to: 2 3 -20; loop: true; dur: 10000" position="2 3 -4" > </a-camera>
+    </a-scene>
+</body>
+</html>
